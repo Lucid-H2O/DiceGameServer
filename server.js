@@ -10,7 +10,6 @@ server.get('/login', (req, res) => {
   res.status(200).send('Login Page')
 })
 // returns dice game object
-// transaction id :
 // 
 server.get('/dice/:seed', (req, res) => {
   const { seed } = req.params
@@ -18,7 +17,7 @@ server.get('/dice/:seed', (req, res) => {
     res.status(404).send('<h1>seed not found</h1>')
   }
   var rng = seedrandom(seed);
-  var result = rng()
+  var result = (rng()*100).toFixed(2)
   res.status(200).json(result);
 })
 
